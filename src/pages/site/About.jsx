@@ -1,7 +1,7 @@
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
-const AllProducts = () => {
+const About = () => {
   return (
     <div>
       {/* navbar */}
@@ -18,4 +18,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default About;
