@@ -1,7 +1,12 @@
+import { Navbar } from "react-bootstrap";
+
 const Home = () => {
   return (
     <div>
       {/* navbar */}
+      <div className="App">
+        <Navbar />
+      </div>
       {/* navbar */}
 
       {/* current page */}
@@ -9,6 +14,7 @@ const Home = () => {
 
       {/* footer */}
       {/* footer */}
+      {/* This is a comment */}
     </div>
   );
 };
