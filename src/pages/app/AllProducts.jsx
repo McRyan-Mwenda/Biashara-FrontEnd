@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
@@ -104,10 +105,10 @@ const AllProducts = () => {
                         </>
                       )}
                     </div>
-                    <a href="/" class="btn btn-success container-fluid mb-3">
+                    <Link to={`/app/products/${product.id}`} class="btn btn-success container-fluid mb-3">
                       <i class="bi bi-eye"></i>{" "}
                       <span className="ml-4">View product</span>
-                    </a>
+                    </Link>
                     <button class="btn btn-warning container-fluid">
                       <i class="bi bi-cart-plus"></i>{" "}
                       <span className="ml-4">Add to cart</span>
@@ -119,9 +120,7 @@ const AllProducts = () => {
               return list;
             })
           ) : (
-            <div>
-              <h1 className="text-center">No products</h1>
-            </div>
+            <></>
           )}
         </div>
       </div>
