@@ -68,10 +68,6 @@ const AllProducts = () => {
                       Price:{" "}
                       <span className="text-success">$ {product.price}</span>
                     </p>
-                    {/* <p className="card-text">
-                      <i class="bi bi-star-fill text-warning mx-1"></i>{" "}
-                      {product.rating.rate}
-                    </p> */}
                     <div className="d-flex">
                       Rating:{" "}
                       <span className="mx-1">
