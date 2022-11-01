@@ -65,15 +65,12 @@ const AllProducts = () => {
                   />
                   <div class="card-body">
                     <h5 class="card-title mb-1">{product.title}</h5>
-                    <p className="fs-5 card-text mb-1">
-                      Price:{" "}
+                    <p className="mb-1">
+                      <span className="fw-semibold">Price:</span>{" "}
                       <span className="text-success">$ {product.price}</span>
                     </p>
                     <div className="d-flex">
-                      Rating:{" "}
-                      <span className="mx-1">
-                        {Math.floor(product.rating.rate)}
-                      </span>
+                      <span className="fw-semibold">Rating:</span>{" "}
                       {product.rating.rate === 5 && (
                         <>
                           <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
@@ -104,8 +101,16 @@ const AllProducts = () => {
                           <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
                         </>
                       )}
+                      <span className="mx-1">
+                        {"["}
+                        {Math.floor(product.rating.rate)} stars
+                        {"]"}
+                      </span>{" "}
                     </div>
-                    <Link to={`/app/products/${product.id}`} class="btn btn-success container-fluid mb-3">
+                    <Link
+                      to={`/app/products/${product.id}`}
+                      class="btn btn-success container-fluid mb-3"
+                    >
                       <i class="bi bi-eye"></i>{" "}
                       <span className="ml-4">View product</span>
                     </Link>
