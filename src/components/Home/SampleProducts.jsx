@@ -1,124 +1,128 @@
-const SampleProducts = () => {
-  const cardWidth = {
-    width: "18rem",
-  };
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
+import { useState } from "react";
 
+const baseURL = "https://fakestoreapi.com/products?limit=4";
+
+const SampleProducts = () => {
+  const [loading, setLoading] = useState(false);
+  const [allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    axios({
+      method: "GET",
+      url: baseURL,
+    })
+      .then((response) => {
+        console.log(response.data);
+
+        setAllProducts(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+  
   return (
     <div className="sample-products mt-3 mb-5">
       <div className="container d-flex align-items-center justify-content-between mb-2">
-        <p className="fs-4 mx-2">Products being sold on app</p>
-        <a
-          href="/"
+        <p className="fs-4 mx-2">Latest products</p>
+        <Link
+          to="/app/products"
           className="fs-6 d-flex justify-content-end mx-2 text-dark link"
         >
           View all <i class="bi bi-caret-right fs-5"></i>
-        </a>
+        </Link>
       </div>
+      {loading && <p className="text-center">Loading...</p>}
       <div className="container d-flex items-align-center">
-        <div class="card mx-2" style={cardWidth}>
-          <img
-            src="https://images.pexels.com/photos/341523/pexels-photo-341523.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            class="card-img-top"
-            alt="sample product"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Name of the product</h5>
-            <p class="card-text">
-              <span className="mx-1">KES 5000</span> <br />
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-half text-warning mx-1"></i>
-              <i class="bi bi-star text-warning mx-1"></i>
-            </p>
-            <a href="/" class="btn btn-success container-fluid mb-3">
-              <i class="bi bi-eye"></i>{" "}
-              <span className="ml-4">View product</span>
-            </a>
-            <button class="btn btn-warning container-fluid">
-              <i class="bi bi-cart-plus"></i>{" "}
-              <span className="ml-4">Add to cart</span>
-            </button>
-          </div>
-        </div>
-        <div class="card mx-2" style={cardWidth}>
-          <img
-            src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            class="card-img-top"
-            alt="sample product"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Name of the product</h5>
-            <p class="card-text">
-              <span className="mx-1">KES 5000</span> <br />
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-half text-warning mx-1"></i>
-              <i class="bi bi-star text-warning mx-1"></i>
-            </p>
-            <a href="/" class="btn btn-success container-fluid mb-3">
-              <i class="bi bi-eye"></i>{" "}
-              <span className="ml-4">View product</span>
-            </a>
-            <button class="btn btn-warning container-fluid">
-              <i class="bi bi-cart-plus"></i>{" "}
-              <span className="ml-4">Add to cart</span>
-            </button>
-          </div>
-        </div>
-        <div class="card mx-2" style={cardWidth}>
-          <img
-            src="https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            class="card-img-top"
-            alt="sample product"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Name of the product</h5>
-            <p class="card-text">
-              <span className="mx-1">KES 5000</span> <br />
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-half text-warning mx-1"></i>
-              <i class="bi bi-star text-warning mx-1"></i>
-            </p>
-            <a href="/" class="btn btn-success container-fluid mb-3">
-              <i class="bi bi-eye"></i>{" "}
-              <span className="ml-4">View product</span>
-            </a>
-            <button class="btn btn-warning container-fluid">
-              <i class="bi bi-cart-plus"></i>{" "}
-              <span className="ml-4">Add to cart</span>
-            </button>
-          </div>
-        </div>
-        <div class="card mx-2" style={cardWidth}>
-          <img
-            src="https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            class="card-img-top"
-            alt="sample product"
-          />
-          <div class="card-body">
-            <h5 class="card-title">Name of the product</h5>
-            <p class="card-text">
-              <span className="mx-1">KES 5000</span> <br />
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-fill text-warning mx-1"></i>
-              <i class="bi bi-star-half text-warning mx-1"></i>
-              <i class="bi bi-star text-warning mx-1"></i>
-            </p>
-            <a href="/" class="btn btn-success container-fluid mb-3">
-              <i class="bi bi-eye"></i>{" "}
-              <span className="ml-4">View product</span>
-            </a>
-            <button class="btn btn-warning container-fluid">
-              <i class="bi bi-cart-plus"></i>{" "}
-              <span className="ml-4">Add to cart</span>
-            </button>
-          </div>
-        </div>
+        {!!allProducts && allProducts.length > 0 ? (
+          allProducts.map((product) => {
+            const list = (
+              <div
+                class="card m-2 shadow"
+                style={{
+                  width: "20rem",
+                  height: "auto",
+                }}
+                key={product.id}
+              >
+                <img
+                  src={product.image}
+                  class="card-img-top p-2"
+                  alt="sample product"
+                  style={{
+                    height: "300px",
+                  }}
+                />
+                <div class="card-body">
+                  <h5 class="card-title mb-1">{product.title}</h5>
+                  <p className="mb-1">
+                    <span className="fw-semibold">Price:</span>{" "}
+                    <span className="text-success">$ {product.price}</span>
+                  </p>
+                  <div className="d-flex">
+                    <span className="fw-semibold">Rating:</span>{" "}
+                    {product.rating.rate === 5 && (
+                      <>
+                        <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
+                      </>
+                    )}
+                    {product.rating.rate >= 4 && (
+                      <>
+                        <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
+                      </>
+                    )}
+                    {product.rating.rate >= 3 && (
+                      <>
+                        <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
+                      </>
+                    )}
+                    {product.rating.rate >= 2 && (
+                      <>
+                        <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
+                      </>
+                    )}
+                    {product.rating.rate >= 1 && (
+                      <>
+                        <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
+                      </>
+                    )}
+                    {product.rating.rate === 0 && (
+                      <>
+                        <i class="bi bi-star-fill text-warning mb-2 mx-1"></i>
+                      </>
+                    )}
+                    <span className="mx-1">
+                      {"["}
+                      {Math.floor(product.rating.rate)} stars
+                      {"]"}
+                    </span>{" "}
+                  </div>
+                  <Link
+                    to={`/app/products/${product.id}`}
+                    class="btn btn-success container-fluid mb-3"
+                  >
+                    <i class="bi bi-eye"></i>{" "}
+                    <span className="ml-4">View product</span>
+                  </Link>
+                  <button class="btn btn-warning container-fluid">
+                    <i class="bi bi-cart-plus"></i>{" "}
+                    <span className="ml-4">Add to cart</span>
+                  </button>
+                </div>
+              </div>
+            );
+
+            return list;
+          })
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
