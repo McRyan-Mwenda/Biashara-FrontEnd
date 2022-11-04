@@ -50,8 +50,7 @@ const SingleProduct = () => {
 
       {/* page content */}
       <div className="mt-3 mb-5">
-        {loading && "Loading..."}
-        <br />
+        {loading && <p className="text-center">Loading...</p>}
       </div>
       <div className="container">
         {product != null ? (

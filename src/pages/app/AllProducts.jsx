@@ -10,7 +10,7 @@ const baseURL = "https://fakestoreapi.com/products";
 
 const AllProducts = () => {
   const [loading, setLoading] = useState(false);
-  const [allProducts, setAllProducts] = useState(null);
+  const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
     setLoading(true);

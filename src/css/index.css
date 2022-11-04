@@ -73,13 +73,13 @@ nav {
   transition: 0.3s ease-in-out;
 }
 
-#navbar li a:hover,
-#navbar li a:active {
+#navbar .link:hover,
+#navbar .link:active {
   color: mediumblue;
 }
 
-#navbar li a:hover::after,
-#navbar li a.active::after {
+#navbar .link:hover::after,
+#navbar .link.active::after {
   content: "";
   width: 30%;
   height: 2px;
@@ -87,6 +87,10 @@ nav {
   position: absolute;
   bottom: -4px;
   left: 20px;
+}
+
+.active {
+  color: mediumblue;
 }
 
 ul {
