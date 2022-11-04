@@ -135,7 +135,7 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
-          <li class="nav-item dropdown">
+          <li class="dropdown dropdown-center">
             <Link
               class="nav-link dropdown-toggle"
               role="button"

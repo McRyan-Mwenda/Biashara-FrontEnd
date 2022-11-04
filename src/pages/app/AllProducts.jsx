@@ -30,15 +30,6 @@ const AllProducts = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const card = {
-    width: "20rem",
-    height: "auto",
-  };
-
-  const cardImage = {
-    height: "300px",
-  };
-
   return (
     <div className="bg-light">
       {/* navbar */}
@@ -47,8 +38,7 @@ const AllProducts = () => {
 
       {/* page content */}
       <div className="mt-3 mb-5">
-        {loading && "Loading..."}
-        <br />
+        {loading && <p className="text-center">Loading...</p>}
         <div className="container">
           <p className="fs-3 mx-4 mb-4">All products</p>
         </div>
@@ -56,12 +46,21 @@ const AllProducts = () => {
           {!!allProducts && allProducts.length > 0 ? (
             allProducts.map((product) => {
               const list = (
-                <div class="card m-4 shadow" style={card} key={product.id}>
+                <div
+                  class="card m-4 shadow"
+                  style={{
+                    width: "20rem",
+                    height: "auto",
+                  }}
+                  key={product.id}
+                >
                   <img
                     src={product.image}
                     class="card-img-top p-2"
                     alt="sample product"
-                    style={cardImage}
+                    style={{
+                      height: "300px",
+                    }}
                   />
                   <div class="card-body">
                     <h5 class="card-title mb-1">{product.title}</h5>

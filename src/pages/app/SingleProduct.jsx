@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
@@ -32,16 +32,6 @@ const SingleProduct = () => {
       .finally(() => setLoading(false));
   }, [productID.id]);
 
-  const card = {
-    width: "fit-content",
-    height: "fit-content",
-  };
-
-  const cardImage = {
-    height: "auto",
-    width: "auto",
-  };
-
   return (
     <div>
       {/* navbar */}
@@ -56,19 +46,30 @@ const SingleProduct = () => {
         {product != null ? (
           <>
             <div className="d-flex w-75 mx-auto mb-5">
-              <div class="card mx-4 shadow" style={card}>
+              <div
+                class="card mx-4 shadow"
+                style={{
+                  width: "fit-content",
+                  height: "fit-content",
+                }}
+              >
                 <img
                   src={product.image}
                   class="card-img-top p-2"
                   alt="sample product"
-                  style={cardImage}
+                  style={{
+                    height: "auto",
+                    width: "auto",
+                  }}
                 />
               </div>
               <div className="px-4">
                 <ul>
                   <li className="fs-5">
                     <span className="fw-semibold">Category: </span>{" "}
-                    <a href="/">{product.category}</a>
+                    <Link to={`/app/categories/${product.category}`}>
+                      {product.category}
+                    </Link>
                   </li>
                   <li className="fs-5">
                     <span className="fw-semibold">Product:</span>{" "}
