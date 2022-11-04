@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 import AllProducts from "./pages/app/AllProducts";
+import SingleCategory from "./pages/app/SingleCategory";
 import SingleProduct from "./pages/app/SingleProduct";
 import About from "./pages/site/About";
 import Contacts from "./pages/site/Contacts";
@@ -14,6 +15,7 @@ const App = () => {
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/app/products" element={<AllProducts />} />
       <Route path="/app/products/:id" element={<SingleProduct />} />
+      <Route path="/app/categories/:name" element={<SingleCategory />} />
     </Routes>
   );
 };
