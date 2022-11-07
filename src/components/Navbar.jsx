@@ -1,4 +1,5 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+import Categories from "./Navbar/Categories";
 
 const Navbar = () => {
   return (
@@ -134,9 +135,20 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
+          <li class="dropdown dropdown-center">
+            <Link
+              class="nav-link dropdown-toggle"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Categories
+            </Link>
+            <Categories />
+          </li>
           <li>
             <NavLink activeClassName="active" to="/app/products">
-              All Products
+              Products
             </NavLink>
           </li>
           <li>

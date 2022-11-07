@@ -1,37 +1,39 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
-const baseURL = "https://fakestoreapi.com/products";
+const baseURL = "https://fakestoreapi.com/products/category";
 
-const AllProducts = () => {
+const SingleCategory = () => {
   const [loading, setLoading] = useState(false);
-  const [allProducts, setAllProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+
+  const categoryName = useParams();
 
   useEffect(() => {
     setLoading(true);
 
     axios({
       method: "GET",
-      url: baseURL,
+      url: `${baseURL}/${categoryName.name}`,
     })
       .then((response) => {
         console.log(response.data);
 
-        setAllProducts(response.data);
+        setCategory(response.data);
       })
       .catch((error) => {
         console.log(error.message);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [categoryName.name]);
 
   return (
-    <div className="bg-light">
+    <div>
       {/* navbar */}
       <Navbar />
       {/* navbar */}
@@ -40,11 +42,11 @@ const AllProducts = () => {
       <div className="mt-3 mb-5">
         {loading && <p className="text-center">Loading...</p>}
         <div className="container">
-          <p className="fs-3 mx-4 mb-4">All products</p>
+          <p className="fs-3 mx-4 mb-4">{categoryName.name}</p>
         </div>
         <div className="container d-flex items-align-center flex-wrap">
-          {!!allProducts && allProducts.length > 0 ? (
-            allProducts.map((product) => {
+          {!!category && category.length > 0 ? (
+            category.map((product) => {
               const list = (
                 <div
                   class="card m-4 shadow"
@@ -137,4 +139,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default SingleCategory;
